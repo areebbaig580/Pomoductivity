@@ -41,6 +41,10 @@ body {
     font-weight: 700;
 }
 
+.logo:hover {
+    cursor: pointer;
+}
+
 .timer-container {
     height: 60vh;
     width: 65vw;
@@ -71,6 +75,11 @@ body {
 .timer-nav p:hover {
     cursor: pointer;
 
+}
+
+.timerBtn {
+    padding: 0.2rem 1rem 0.5rem;
+    border-radius: 5px;
 }
 
 .main-timer {

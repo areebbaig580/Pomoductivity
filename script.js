@@ -6,10 +6,11 @@ const breakBtn = document.querySelector(".break")
 const longBreakBtn = document.querySelector(".long-break")
 
 
-let remainingSeconds = 25 * 60;
+let remainingSeconds = 1 * 60;
 focusBtn.style.backgroundColor = `#373636b7`;
 let timeinterval = null;
 let isRunning = false;
+let currMode = "focus";
 
 
 function switchMode(duration, displayMin, activeBtn, otherBtns) {
@@ -32,6 +33,7 @@ function switchMode(duration, displayMin, activeBtn, otherBtns) {
 
 focusBtn.addEventListener("click", (evt) => {
     switchMode(25, "25", focusBtn, [breakBtn, longBreakBtn]);
+    currMode = "focus";
 
 });
 
@@ -39,6 +41,7 @@ focusBtn.addEventListener("click", (evt) => {
 breakBtn.addEventListener("click", (evt) => {
 
     switchMode(10, "10", breakBtn, [focusBtn, longBreakBtn]);
+    currMode = "short-break";
 
 });
 
@@ -46,6 +49,7 @@ breakBtn.addEventListener("click", (evt) => {
 longBreakBtn.addEventListener("click", (evt) => {
 
     switchMode(15, "15", longBreakBtn, [focusBtn, breakBtn]);
+    currMode = "long-break";
 
 });
 
@@ -79,7 +83,34 @@ function startfunction() {
     if (remainingSeconds === 0) {
         clearInterval(timeinterval);
 
+        saveSession();
+
+
     }
 
 };
+
+function saveSession() {
+
+    if (currMode !== "focus") {
+        return;  
+    }
+
+
+    session = {
+        date: new Date().toISOString().split('T')[0],
+        type: currMode,
+        timestamp: Date.now(),
+    };
+
+    let existingSession = localStorage.getItem('pomodoroSessions');
+    let sessionArray = existingSession ? JSON.parse(existingSession) : [];
+
+
+    sessionArray.push(session);
+
+    localStorage.setItem('pomodoroSessions', JSON.stringify(sessionArray));
+
+
+}
 

@@ -13,16 +13,36 @@ body {
     background-color: rgb(0, 0, 0);
 }
 
-.heading {
+.heading-container {
+    height: 60px;
+    width: 50%;
+    display: flex;
     margin-top: 1rem;
+    background-color: rgb(23, 23, 23);
+    align-items: center;
+    position: relative;
+}
+
+.heading {
     font-size: 1.6rem;
     font-weight: 600;
-    width: 50%;
     color: #8A75E6;
-    background-color: #0d0d0d;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-    padding: 1rem 2rem 1rem;
+    width: 50%;
+    margin-left: 1rem;
+
+}
+
+.home {
+    position: absolute;
+    right: 1rem;
+    color: rgb(185, 185, 185);
+    font-size: 1.5rem;
+
+}
+
+.home:hover {
+    color: rgb(255, 255, 255);
+
 }
 
 

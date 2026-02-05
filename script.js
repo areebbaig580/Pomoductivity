@@ -6,7 +6,7 @@ const breakBtn = document.querySelector(".break")
 const longBreakBtn = document.querySelector(".long-break")
 
 
-let remainingSeconds = 1 * 60;
+let remainingSeconds = 25 * 60;
 focusBtn.style.backgroundColor = `#373636b7`;
 let timeinterval = null;
 let isRunning = false;
@@ -77,8 +77,13 @@ function startfunction() {
     let min = Math.floor(remainingSeconds / 60);
     let sec = remainingSeconds % 60;
 
+
+    sec = sec < 10 ? '0' + sec : sec;
+    min = min < 10 ? '0' + min : min;
+
     seconds.innerHTML = sec;
     minutes.innerHTML = min;
+
 
     if (remainingSeconds === 0) {
         clearInterval(timeinterval);
@@ -93,7 +98,7 @@ function startfunction() {
 function saveSession() {
 
     if (currMode !== "focus") {
-        return;  
+        return;
     }
 
 

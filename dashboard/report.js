@@ -1,6 +1,12 @@
 const ctx = document.getElementById('myChart');
 const ctx2 = document.getElementById('myChart2');
 const noSession = document.getElementById('session');
+const backPage = document.querySelector(".home");
+const noFocus = document.getElementById('focus-hours');
+
+backPage.addEventListener("click", (evt) =>{
+    window.location.href = "../index.html";
+});
 
 function getSession() {
 
@@ -52,9 +58,25 @@ function getWeeklySessions() {
 
 };
 
+function getdailyHours() {
+    let sessionsToday = getTodaySession(); 
+    let focusHours = sessionsToday * 25;
+    let hr = Math.floor(focusHours/60);
+    let min = focusHours - (hr * 60);
+    if(min < 10){
+        min = "0" + min;
+    }
+    noFocus.innerHTML = `${hr} : ${min}`;
+
+};
+
 
 function updateChart() {
-    noSession.innerHTML = getTodaySession();
+    currentSession = getTodaySession();
+    localStorage.setItem('currentSession', currentSession);
+    noSession.innerHTML = currentSession;
+
+    getdailyHours();
 };
 
 

@@ -107,16 +107,6 @@ body {
     color: #e6e6e6;
 }
 
-.hrs-mins{
-    position: absolute;
-    top: 2.6rem;
-    right: 0.5rem;
-    letter-spacing: 1px;
-    color: rgb(170, 168, 168);
-    font-size: 0.9rem;
-
-}
-
 .container-chart {
     height: 70vh;
     width: 50%;

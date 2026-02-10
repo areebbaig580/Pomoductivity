@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Settings</title>
     <link rel="stylesheet" href="settings.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -25,52 +25,64 @@
         <div class="boxes">
             <div class="container">
                 <div class="label">Pomodoro</div>
-                 
+                <input type="number" id="pomodoro" value="25" class="input"  min="1" max="500">
+                <i class="fa-solid fa-angle-up arrow-up"></i>
+                <i class="fa-solid fa-angle-down arrow-down"></i>
+
             </div>
             <div class="container">
                 <div class="label">Short break</div>
-                
+                <input type="number" id="short-break" value="5" class="input"  min="1" max="500">
+                <i class="fa-solid fa-angle-up arrow-up"></i>
+                <i class="fa-solid fa-angle-down arrow-down"></i>
+
             </div>
             <div class="container">
                 <div class="label">Long break</div>
-               
+                <input type="number" id="long-break" value="15" class="input"  min="1" max="500">
+                <i class="fa-solid fa-angle-up arrow-up"></i>
+                <i class="fa-solid fa-angle-down arrow-down"></i>
             </div>
         </div>
 
+    </div>
+    <div class="activity-info">
+        <div class="main-heading">
+            Sound
+            <div class="margin">
+
+            </div>
         </div>
-        <div class="activity-info">
-            <div class="main-heading">
-                Sound
-                <div class="margin">
+        <div class="setting">
+            <div class="coming-soon">Coming soon</div>
 
-                </div>
-            </div>
-            <div class="setting">
-                <div class="settings-txt"></div>
-                <div class="drpdown"></div>
-            </div>
-
+            <div class="settings-txt"></div>
+            <div class="drpdown"></div>
         </div>
-        <div class="activity-info">
-            <div class="main-heading">
-                Themes
-                <div class="margin">
 
-                </div>
-            </div>
-            <div class="setting">
-                <div class="settings-txt"></div>
-                <div class="drpdown"></div>
-            </div>
-            <div class="setting">
-                <div class="settings-txt"></div>
-                <div class="drpdown"></div>
-            </div>
+    </div>
+    <div class="activity-info">
+        <div class="main-heading">
+            Themes
+            <div class="margin">
 
+            </div>
         </div>
-    
+        <div class="setting">
+            <div class="coming-soon">Coming soon</div>
 
-            <script src="settings.js"></script>
+            <div class="settings-txt"></div>
+            <div class="drpdown"></div>
+        </div>
+        <div class="setting">
+            <div class="settings-txt"></div>
+            <div class="drpdown"></div>
+        </div>
+
+    </div>
+
+
+    <script src="settings.js"></script>
 </body>
 
 </html>

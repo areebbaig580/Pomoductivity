@@ -4,16 +4,25 @@ const btn = document.querySelector(".start-stop");
 const focusBtn = document.querySelector(".focus");
 const breakBtn = document.querySelector(".break")
 const longBreakBtn = document.querySelector(".long-break")
+const txt = document.querySelector(".txt");
+const sound = new Audio('sound/Thud.mp3');
 
-
-let remainingSeconds = 25 * 60;
 focusBtn.style.backgroundColor = `#373636b7`;
 let timeinterval = null;
 let isRunning = false;
 let currMode = "focus";
 
+let pomodoro = localStorage.getItem('pomodoro');
+let shortBreak = localStorage.getItem('short-break');
+let longBreak = localStorage.getItem('long-break');
 
-function switchMode(duration, displayMin, activeBtn, otherBtns) {
+let remainingSeconds = parseInt(pomodoro) * 60;
+
+window.addEventListener("DOMContentLoaded", () => {
+    minutes.innerHTML = pomodoro;
+});
+
+function switchMode(duration, displayMin, activeBtn, otherBtns, text) {
     if (isRunning) {
 
         btn.innerHTML = "START";
@@ -24,7 +33,7 @@ function switchMode(duration, displayMin, activeBtn, otherBtns) {
     remainingSeconds = duration * 60;
     minutes.innerHTML = displayMin;
     seconds.innerHTML = "00";
-
+    txt.innerHTML = text;
 
     activeBtn.style.backgroundColor = `#373636b7`;
     otherBtns.forEach(btn => btn.style.backgroundColor = ``);
@@ -32,7 +41,7 @@ function switchMode(duration, displayMin, activeBtn, otherBtns) {
 };
 
 focusBtn.addEventListener("click", (evt) => {
-    switchMode(25, "25", focusBtn, [breakBtn, longBreakBtn]);
+    switchMode(parseInt(pomodoro), pomodoro, focusBtn, [breakBtn, longBreakBtn], "Lets focus!");
     currMode = "focus";
 
 });
@@ -40,7 +49,7 @@ focusBtn.addEventListener("click", (evt) => {
 
 breakBtn.addEventListener("click", (evt) => {
 
-    switchMode(10, "10", breakBtn, [focusBtn, longBreakBtn]);
+    switchMode(parseInt(shortBreak), shortBreak, breakBtn, [focusBtn, longBreakBtn], "Take a break!");
     currMode = "short-break";
 
 });
@@ -48,7 +57,7 @@ breakBtn.addEventListener("click", (evt) => {
 
 longBreakBtn.addEventListener("click", (evt) => {
 
-    switchMode(15, "15", longBreakBtn, [focusBtn, breakBtn]);
+    switchMode(parseInt(longBreak), longBreak, longBreakBtn, [focusBtn, breakBtn], "Take a long break!");
     currMode = "long-break";
 
 });
@@ -59,7 +68,7 @@ btn.addEventListener("click", (evt) => {
 
         btn.innerHTML = "START";
         clearInterval(timeinterval);
-        isRunning = false;
+
     }
     else {
         btn.innerHTML = "PAUSE";
@@ -86,10 +95,14 @@ function startfunction() {
 
 
     if (remainingSeconds === 0) {
+
         clearInterval(timeinterval);
-
         saveSession();
-
+        if (currMode === "focus") {
+            switchMode(parseInt(shortBreak), shortBreak, breakBtn, [focusBtn, longBreakBtn], "Take a break!");
+        } else if (currMode === "short-break") {
+            switchMode(parseInt(pomodoro), pomodoro, focusBtn, [breakBtn, longBreakBtn], "Lets focus!");
+        }
 
     }
 
@@ -101,10 +114,10 @@ function saveSession() {
         return;
     }
 
-
-    session = {
+    let session = {
         date: new Date().toISOString().split('T')[0],
         type: currMode,
+        duration: parseInt(pomodoro),
         timestamp: Date.now(),
     };
 

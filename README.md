@@ -21,7 +21,7 @@ It combines the Pomodoro technique with performance tracking and weekly analytic
     <li>Interactive charts displaying weekly data</li>
     <li>Persistent data storage using Local Storage</li>
 </ul>
-<hr>
+
 
 <h2>📊 Productivity Dashboard</h2>
 <ul>

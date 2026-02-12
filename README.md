@@ -8,7 +8,7 @@ It combines the Pomodoro technique with performance tracking and weekly analytic
 
 <h2>📸 App Preview</h2>
 <p>
-<img src="assets/preview.jpej" alt="Pomodoctivity App Preview" width="100%">
+<img src="assets/preview.jpeg" alt="Pomodoctivity App Preview" width="100%">
 </p>
 
 <h2>🚀 Key Features</h2>

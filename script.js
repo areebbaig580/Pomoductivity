@@ -5,7 +5,7 @@ const focusBtn = document.querySelector(".focus");
 const breakBtn = document.querySelector(".break")
 const longBreakBtn = document.querySelector(".long-break")
 const txt = document.querySelector(".txt");
-const sound = new Audio('sound/Thud.mp3');
+
 
 focusBtn.style.backgroundColor = `#373636b7`;
 let timeinterval = null;
@@ -63,7 +63,7 @@ longBreakBtn.addEventListener("click", (evt) => {
 });
 
 btn.addEventListener("click", (evt) => {
-
+    
     if (isRunning) {
 
         btn.innerHTML = "START";

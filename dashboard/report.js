@@ -60,16 +60,21 @@ function getWeeklySessions() {
 };
 
 function getdailyHours() {
-    let sessionsToday = getTodaySession();
-    let focusHours = sessionsToday * 25;
-    let hr = Math.floor(focusHours / 60);
-    let min = focusHours - (hr * 60);
-    if (min < 10) {
-        min = "0" + min;
+    let hoursToday = getSession();
+    let today = getTodayDate();
+    totalTime = hoursToday.filter(s => s.type === "focus" && s.date === today && s.duration > 0);
+
+    let totalMinutes = 0;
+    for (let session of totalTime) {
+        totalMinutes += session.duration;
     }
-    if(hr===0){
+
+    let hr = Math.floor(totalMinutes / 60);
+    let min = Math.round(totalMinutes % 60);
+
+    if (hr === 0) {
         noFocus.innerHTML = `${min}m`;
-    }else{
+    } else {
         noFocus.innerHTML = `${hr}h ${min}m`;
     }
 };
@@ -94,12 +99,14 @@ function getWeeklyHours() {
         currentDay.setDate(monday.getDate() + i);
         let dateString = currentDay.toISOString().split('T')[0];
 
-        let count = focusSessions.filter(s => s.date === dateString).length;
+        let count = focusSessions.filter(s => s.date === dateString && s.duration > 0);
 
-        focusMin = count * 25;
-        focusHours = focusMin / 60;
+        let totalMinutes = 0;
+        for (let session of count) {
+            totalMinutes += session.duration;
+        }
 
-        dailyHours[i] = focusHours;
+        dailyHours[i] = totalMinutes;
     }
 
 
@@ -108,19 +115,21 @@ function getWeeklyHours() {
 
 function toatalWeeklyHours() {
     let dailyHr = getWeeklyHours();
-    let totalHours = 0
+    let totalTime = 0
+
     for (let hours of dailyHr) {
-        totalHours += hours;
+        totalTime += hours;
     }
-    let hr = Math.floor(totalHours);
-    let min = Math.round((totalHours % 1) * 60);
+
+    let hr = Math.floor(totalTime / 60);
+    let min = Math.round(totalTime % 60);
     if (hr === 0) {
         return `${min}m`;
     } else {
 
         return `${hr}h ${min}m`;
     }
-    
+
 };
 
 
@@ -172,8 +181,8 @@ new Chart(ctx, {
                     label: function (context) {
                         let hours = context.parsed.y;
 
-                        let hr = Math.floor(hours);
-                        let min = Math.round((hours % 1) * 60);
+                        let hr = Math.floor(hours / 60);
+                        let min = Math.round(hours % 60);
                         if (hr === 0) {
                             return `Study hours :${min}m`;
                         } else {

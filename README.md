@@ -5,7 +5,6 @@
 <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.  
 It combines the Pomodoro technique with performance tracking and weekly analytics to help users monitor and improve their focus.
 </p>
-<hr>
 
 <h2>📸 App Preview</h2>
 <p>

@@ -12,9 +12,9 @@ let timeinterval = null;
 let isRunning = false;
 let currMode = "focus";
 
-let pomodoro = localStorage.getItem('pomodoro');
-let shortBreak = localStorage.getItem('short-break');
-let longBreak = localStorage.getItem('long-break');
+let pomodoro = localStorage.getItem('pomodoro') || 25;
+let shortBreak = localStorage.getItem('short-break')|| 5;
+let longBreak = localStorage.getItem('long-break')||10;
 
 let remainingSeconds = parseInt(pomodoro) * 60;
 
@@ -68,13 +68,13 @@ btn.addEventListener("click", (evt) => {
 
         btn.innerHTML = "START";
         clearInterval(timeinterval);
+        isRunning = false
 
     }
     else {
         btn.innerHTML = "PAUSE";
         timeinterval = setInterval(startfunction, 1000);
         isRunning = true;
-
     }
 
 });
@@ -94,9 +94,10 @@ function startfunction() {
     minutes.innerHTML = min;
 
 
-    if (remainingSeconds === 0) {
+    if (remainingSeconds <= 0) {
 
         clearInterval(timeinterval);
+        isRunning = false;
         saveSession();
         if (currMode === "focus") {
             switchMode(parseInt(shortBreak), shortBreak, breakBtn, [focusBtn, longBreakBtn], "Take a break!");

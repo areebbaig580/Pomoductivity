@@ -39,7 +39,7 @@ It combines the Pomodoro technique with performance tracking and weekly analytic
     <li>Chart library</li>
 </ul>
 
-<h2>🧠 What I Learned</h2>
+<h2>What I Learned</h2>
 <ul>
     <li>Advanced timer logic implementation</li>
     <li>Managing application state</li>

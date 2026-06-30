@@ -28,10 +28,23 @@ body {
     display: flex;
     gap: 1.9rem;
 }
-
-
-.segment a {
+.nav-bars a{
     text-decoration: none;
+}
+
+.segment {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    border-radius: 10px;
+    gap: 0.5rem;
+    padding: 10px;
+    background-color: #2b2a2ab7;
+}
+
+.nav-elem {
     font-size: 1rem;
 
 }
@@ -120,4 +133,47 @@ body {
 
 .session-counter div {
     font-size: 1.5rem;
+}
+@media (max-width: 700px) {
+     .nav {
+        width: 90%;
+    }
+
+    .nav-bars {
+        gap: 1rem;
+    }
+}
+@media (max-width: 600px) {
+    .timer-container {
+        width: 90%;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .nav-elem {
+        font-size: 0.8rem;
+
+    }
+
+}
+
+@media (max-width: 450px) {
+    .nav-elem {
+        display: none;
+
+    }
+
+}
+@media (max-width: 380px) {
+    .size {
+    font-size: 7rem;
+    color: #8A75E6;
+}
+.timer-nav p {
+    font-size: 0.9rem;
+    font-weight: 600;
+
+}
 }

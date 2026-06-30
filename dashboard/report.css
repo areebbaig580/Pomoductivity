@@ -50,7 +50,7 @@ body {
 .activity-info {
     display: flex;
     flex-direction: column;
-    height: 30vh;
+    height: fit-content;
     width: 50%;
 
 }
@@ -108,10 +108,60 @@ body {
 }
 
 .container-chart {
-    height: 70vh;
+    height: 60vh;
     width: 50%;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 1.5rem;
 
+}
+@media (max-width: 1500px) {
+     .heading-container {
+        width: 70%;
+    }
+    .activity-info {
+        width: 70%;
+    }
+    .container-chart{
+        width: 70%;
+        height: fit-content;
+    }
+}
+@media (max-width: 900px) {
+    .heading-container {
+        width: 90%;
+    }
+    .activity-info {
+        width: 90%;
+    }
+    .container{
+        width: 33%;
+    }
+    .label {
+        font-size: 0.9rem;
+    }
+    .container-chart{
+        width: 90%;
+        height: fit-content;
+    }
+}
+@media (max-width: 600px){
+    .main-heading {
+        font-size: 1rem;
+    }
+    .heading{
+        font-size: 1.2rem;
+    } 
+}
+@media (max-width: 500px){
+    .label{
+        margin-left: 0.5rem;
+    }
+    .icon {
+        font-size: 1rem;
+    }
+    .info {
+        font-size: 1rem;
+    }
 }
